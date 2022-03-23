@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,5 +20,16 @@ public class EnemyController : MonoBehaviour
     {
         pathfinder.SetDestination(target.position);
         Debug.Log(target.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            transform.position = new Vector3(10, 1, 0);
+            other.transform.position = new Vector3(0, 1, 0);
+        }
+        
+        
     }
 }

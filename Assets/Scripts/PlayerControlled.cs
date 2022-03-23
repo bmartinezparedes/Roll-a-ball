@@ -65,14 +65,6 @@ public class PlayerControlled : MonoBehaviour
         rb.AddForce(movement*speed);
     }
 
-    private void Update()
-    {
-        if (GameObject.Find("Player").transform.position == GameObject.Find("Enemy").transform.position+GameObject.Find("Player").transform.position)
-        {
-            GameObject.Find("Player").transform.position = new Vector3(0, 0.0f, 0.5f);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PickUp"))
@@ -81,6 +73,11 @@ public class PlayerControlled : MonoBehaviour
             contador += 1;
             SetTxtContador();
         }
-        
+        /*if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("Choca contra Enemigo");
+            transform.position = new Vector3(0,1,0);
+            other.transform.position = new Vector3(10, 1, 0);
+        }*/
     }
 }
