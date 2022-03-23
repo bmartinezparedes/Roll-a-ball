@@ -8,18 +8,23 @@ public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent pathfinder;
     private Transform target; 
+    private GameObject txtGanarObject;
     // Start is called before the first frame update
     void Start()
     {
         pathfinder = GetComponent<NavMeshAgent>();
         target = GameObject.Find("Player").transform;
+        txtGanarObject = GameObject.Find("TxtGanar");
     }
 
     // Update is called once per frame
     void Update()
     {
-        pathfinder.SetDestination(target.position);
-        Debug.Log(target.position);
+        if (txtGanarObject.activeSelf == false)
+        {
+            pathfinder.SetDestination(target.position);
+            Debug.Log(target.position);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
